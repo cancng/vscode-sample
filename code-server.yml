@@ -1,0 +1,29 @@
+# ----------------
+# Code Server
+# Base Tag: linuxserver/code-server:arm64v8-latest
+# Docs: https://hub.docker.com/r/linuxserver/code-server
+# ----------------
+
+version: '3.7'
+services:
+  code:
+    build:
+      context: .
+      args:
+        - DEFAULT_USER=${DEFAULT_USER}
+    image: code.server.sdk
+    container_name: code.server
+    privileged: false
+    restart: unless-stopped
+    networks:
+      - code_server
+    env_file: .env
+    command: code-server --disable-telemetry
+    volumes:
+      - /Volumes/canSSD/Containers/codeserver:/config
+    ports:
+      - 1000:8443
+
+networks:
+  code_server:
+    driver: bridge
