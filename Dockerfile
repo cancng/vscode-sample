@@ -1,8 +1,10 @@
 FROM linuxserver/code-server:arm64v8-4.5.0
 
+RUN add-apt-repository ppa:saiarcot895/chromium-dev
+
 RUN apt-get update && \
   apt-get upgrade -y && \
-  apt install -y ansible apt-transport-https build-essential ca-certificates chromium chromium-browser ffmpeg gnupg-agent htop libffi-dev libssl-dev python3 python3-dev python3-pip software-properties-common systemd unzip vim wget
+  apt install -y ansible apt-transport-https build-essential ca-certificates chromium-browser ffmpeg gnupg-agent htop libffi-dev libssl-dev python3 python3-dev python3-pip software-properties-common systemd unzip vim wget
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
   apt-get install -y nodejs
