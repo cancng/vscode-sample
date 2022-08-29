@@ -2,7 +2,7 @@ FROM linuxserver/code-server:arm64v8-4.5.0
 
 RUN apt-get update
 
-RUN apt-get install software-properties-common
+RUN apt-get install software-properties-common -y
 
 RUN add-apt-repository ppa:saiarcot895/chromium-dev
 
